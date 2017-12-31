@@ -1,5 +1,5 @@
 {
-    "name": "kesar/ethereum-php",
+    "name": "elycicn/ethereum-php",
     "description": "Ethereum client library in PHP",
     "require": {
         "php": ">=7",
@@ -13,6 +13,10 @@
         {
             "name": "Cesar Rodriguez",
             "email": "cesar@lightstreams.io"
+        },
+        {
+            "name": "Ely Haughie",
+            "email": "elycin2@gmail.com"
         }
     ]
 }
