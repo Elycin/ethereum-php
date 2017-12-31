@@ -24,9 +24,7 @@ class TransactionInfo
         $this->blockHash = new BlockHash($response['blockHash']);
         $this->blockNumber = hexdec($response['blockNumber']);
         $this->from = new Address($response['from']);
-        if ($response['to']) {
-            $this->to = new Address($response['to']);
-        }
+        if ($response['to']) $this->to = new Address($response['to']);
         $this->gas = hexdec($response['gas']);
         $this->gasPrice = new Wei(hexdec($response['gasPrice']));
         $this->hash = new TransactionHash($response['hash']);
