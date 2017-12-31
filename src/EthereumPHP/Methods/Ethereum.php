@@ -12,7 +12,7 @@ use EthereumPHP\Types\TransactionInfo;
 use EthereumPHP\Types\TransactionReceipt;
 use EthereumPHP\Types\Wei;
 
-class Eth extends AbstractMethods
+class Ethereum extends AbstractMethods
 {
     public function protocolVersion(): string
     {

@@ -2,7 +2,7 @@
 
 namespace EthereumPHP;
 
-use EthereumPHP\Methods\Eth;
+use EthereumPHP\Methods\Ethereum;
 use EthereumPHP\Methods\Net;
 use EthereumPHP\Methods\Personal;
 use EthereumPHP\Methods\Shh;
@@ -19,7 +19,7 @@ class EthereumClient
         $this->client = Client::factory($url);
         $this->methods = [
             'net' => new Net($this->client),
-            'eth' => new Eth($this->client),
+            'eth' => new Ethereum($this->client),
             'shh' => new Shh($this->client),
             'web3' => new Web3($this->client),
             'personal' => new Personal($this->client),
@@ -41,7 +41,7 @@ class EthereumClient
         return $this->methods['shh'];
     }
 
-    public function eth(): Eth
+    public function eth(): Ethereum
     {
         return $this->methods['eth'];
     }
