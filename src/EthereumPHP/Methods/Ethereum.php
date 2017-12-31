@@ -53,7 +53,6 @@ class Ethereum extends AbstractMethods
         );
 
         return (bool)$response->getRpcResult();
-
     }
 
     public function hashRate(): int
@@ -107,13 +106,12 @@ class Ethereum extends AbstractMethods
         );
 
         return new Wei(hexdec($response->getRpcResult()));
-
     }
 
-    public function getStorageAt(Address $address, int $quantity, BlockNumber $blockNumber): string
+    public function getStorageAt(Address $address, int $positionNumber, BlockNumber $blockNumber): string
     {
         $response = $this->client->send(
-            $this->client->request(1, 'eth_getStorageAt', [$address->toString(), $quantity, $blockNumber->toString()])
+            $this->client->request(1, 'eth_getStorageAt', [$address->toString(), $positionNumber, $blockNumber->toString()])
         );
 
         return $response->getRpcResult();
@@ -135,7 +133,6 @@ class Ethereum extends AbstractMethods
         );
 
         return hexdec($response->getRpcResult());
-
     }
 
     public function getBlockTransactionCountByNumber(BlockNumber $blockNumber): int
@@ -145,7 +142,6 @@ class Ethereum extends AbstractMethods
         );
 
         return hexdec($response->getRpcResult());
-
     }
 
     public function getUncleCountByBlockHash(BlockHash $hash): int
@@ -155,7 +151,6 @@ class Ethereum extends AbstractMethods
         );
 
         return hexdec($response->getRpcResult());
-
     }
 
     public function getUncleCountByBlockNumber(BlockNumber $blockNumber): int
@@ -165,7 +160,6 @@ class Ethereum extends AbstractMethods
         );
 
         return hexdec($response->getRpcResult());
-
     }
 
     public function getCode(Address $address, BlockNumber $blockNumber)
@@ -194,7 +188,6 @@ class Ethereum extends AbstractMethods
         );
 
         return new TransactionHash($response->getRpcResult());
-
     }
 
     public function sendRawTransaction(string $data): TransactionHash
@@ -204,7 +197,6 @@ class Ethereum extends AbstractMethods
         );
 
         return $response->getRpcResult();
-
     }
 
     public function call(Transaction $transaction, BlockNumber $blockNumber): string
@@ -233,7 +225,6 @@ class Ethereum extends AbstractMethods
         );
 
         return ($response->getRpcResult()) ? new Block($response->getRpcResult()) : null;
-
     }
 
     public function getBlockByNumber(BlockNumber $blockNumber, bool $expandTransactions = false): ?Block
@@ -243,7 +234,6 @@ class Ethereum extends AbstractMethods
         );
 
         return ($response->getRpcResult()) ? new Block($response->getRpcResult()) : null;
-
     }
 
     public function getTransactionByHash(TransactionHash $hash): ?TransactionInfo
@@ -272,7 +262,6 @@ class Ethereum extends AbstractMethods
         );
 
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;
-
     }
 
     public function getTransactionReceipt(TransactionHash $hash): ?TransactionReceipt
@@ -282,7 +271,6 @@ class Ethereum extends AbstractMethods
         );
 
         return ($response->getRpcResult()) ? new TransactionReceipt($response->getRpcResult()) : null;
-
     }
 
     public function getUncleByBlockHashAndIndex(BlockHash $hash, int $index): ?Block
@@ -292,7 +280,6 @@ class Ethereum extends AbstractMethods
         );
 
         return ($response->getRpcResult()) ? new Block($response->getRpcResult()) : null;
-
     }
 
     public function getUncleByBlockNumberAndIndex(BlockNumber $blockNumber, int $index): ?Block
@@ -302,7 +289,6 @@ class Ethereum extends AbstractMethods
         );
 
         return ($response->getRpcResult()) ? new Block($response->getRpcResult()) : null;
-
     }
 
     public function getCompilers(): array
@@ -312,7 +298,6 @@ class Ethereum extends AbstractMethods
         );
 
         return ($response->getRpcResult()) ? $response->getRpcResult() : [];
-
     }
 
     public function compileSolidity(string $code): array
