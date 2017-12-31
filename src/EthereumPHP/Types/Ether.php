@@ -21,7 +21,7 @@ class Ether
         return new Wei($this->amount * 1000000000000000000);
     }
 
-    public function __toString()
+    public function __toString() : string 
     {
         return (string)$this->amount;
     }

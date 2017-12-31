@@ -46,13 +46,9 @@ class Block
         $this->totalDifficulty = hexdec($response['totalDifficulty']);
         $this->transactionsRoot = new TransactionHash($response['transactionsRoot']);
         $this->transactions = [];
-        foreach ($response['transactions'] as $transaction) {
-            $this->transactions[] = new TransactionHash($transaction);
-        }
         $this->uncles = [];
-        foreach ($response['uncles'] as $uncle) {
-            $this->uncles[] = new BlockHash($uncle);
-        }
+        foreach ($response['transactions'] as $transaction) $this->transactions[] = new TransactionHash($transaction);
+        foreach ($response['uncles'] as $uncle) $this->uncles[] = new BlockHash($uncle);
     }
 
     public function difficulty(): float

@@ -14,12 +14,12 @@ class Hash
         $this->hash = $hash;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->hash;
     }
 
-    public function toString()
+    public function toString(): string
     {
         return $this->hash;
     }

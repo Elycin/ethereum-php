@@ -9,7 +9,7 @@ class BlockNumber
     public function __construct(string $tag = 'latest')
     {
         if (is_numeric($tag)) {
-            $tag = '0x' . dechex($tag);
+            $tag = sprintf("0x%s", dechex($tag));
         } else {
             if (!in_array($tag, ['latest', 'earliest', 'pending'])) {
                 throw new \InvalidArgumentException('wrong BlockNumber');
@@ -18,12 +18,12 @@ class BlockNumber
         $this->tag = $tag;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->tag;
     }
 
-    public function toString()
+    public function toString(): string
     {
         return $this->tag;
     }

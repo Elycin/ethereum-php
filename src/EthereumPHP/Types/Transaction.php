@@ -12,15 +12,7 @@ class Transaction
     private $value;
     private $nonce;
 
-    public function __construct(
-        Address $from,
-        Address $to,
-        string $data = null,
-        int $gas = null,
-        Wei $gasPrice = null,
-        int $value = null,
-        int $nonce = null
-    )
+    public function __construct(Address $from, Address $to, string $data = null, int $gas = null, Wei $gasPrice = null, int $value = null, int $nonce = null)
     {
         $this->from = $from;
         $this->to = $to;
@@ -38,26 +30,31 @@ class Transaction
             'to' => $this->to->toString(),
         ];
 
-        if (!is_null($this->data)) {
-            $transaction['data'] = '0x' . dechex($this->data);
-        }
+        if (!is_null($this->data))
+            $transaction['data'] = $this->dechexAutomation($this->data);
 
-        if (!is_null($this->gas)) {
-            $transaction['gas'] = '0x' . dechex($this->gas);
-        }
 
-        if (!is_null($this->gasPrice)) {
-            $transaction['gasPrice'] = '0x' . dechex($this->gasPrice->amount());
-        }
+        if (!is_null($this->gas))
+            $transaction['gas'] = $this->dechexAutomation($this->gas);
 
-        if (!is_null($this->value)) {
-            $transaction['value'] = '0x' . dechex($this->value);
-        }
 
-        if (!is_null($this->nonce)) {
-            $transaction['nonce'] = '0x' . dechex($this->nonce);
-        }
+        if (!is_null($this->gasPrice))
+            $transaction['gasPrice'] = $this->dechexAutomation($this->gasPrice->amount());
+
+
+        if (!is_null($this->value))
+            $transaction['value'] = $this->dechexAutomation($this->value);
+
+
+        if (!is_null($this->nonce))
+            $transaction['nonce'] = $this->dechexAutomation($this->nonce);
+
 
         return $transaction;
+    }
+
+    public function dechexAutomation($data)
+    {
+        return sprintf("0x%s", dechex($data));
     }
 }
