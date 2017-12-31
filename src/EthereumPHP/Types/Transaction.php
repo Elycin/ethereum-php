@@ -20,7 +20,8 @@ class Transaction
         Wei $gasPrice = null,
         int $value = null,
         int $nonce = null
-    ) {
+    )
+    {
         $this->from = $from;
         $this->to = $to;
         $this->data = $data;
@@ -38,23 +39,23 @@ class Transaction
         ];
 
         if (!is_null($this->data)) {
-            $transaction['data'] = '0x'.dechex($this->data);
+            $transaction['data'] = '0x' . dechex($this->data);
         }
 
         if (!is_null($this->gas)) {
-            $transaction['gas'] = '0x'.dechex($this->gas);
+            $transaction['gas'] = '0x' . dechex($this->gas);
         }
 
         if (!is_null($this->gasPrice)) {
-            $transaction['gasPrice'] = '0x'.dechex($this->gasPrice->amount());
+            $transaction['gasPrice'] = '0x' . dechex($this->gasPrice->amount());
         }
 
         if (!is_null($this->value)) {
-            $transaction['value'] = '0x'.dechex($this->value);
+            $transaction['value'] = '0x' . dechex($this->value);
         }
 
         if (!is_null($this->nonce)) {
-            $transaction['nonce'] = '0x'.dechex($this->nonce);
+            $transaction['nonce'] = '0x' . dechex($this->nonce);
         }
 
         return $transaction;

@@ -9,7 +9,7 @@ class Address
     public function __construct(string $address)
     {
         if (strlen($address) !== 42) {
-            throw new \LengthException($address.' is not valid.');
+            throw new \LengthException($address . ' is not valid.');
         }
         $this->address = $address;
     }

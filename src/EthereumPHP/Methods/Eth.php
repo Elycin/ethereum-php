@@ -258,7 +258,7 @@ class Eth extends AbstractMethods
     public function getTransactionByBlockHashAndIndex(BlockHash $hash, int $index): ?TransactionInfo
     {
         $response = $this->client->send(
-            $this->client->request(1, 'eth_getTransactionByBlockHashAndIndex', [$hash->toString(), '0x'.dechex($index)])
+            $this->client->request(1, 'eth_getTransactionByBlockHashAndIndex', [$hash->toString(), '0x' . dechex($index)])
         );
 
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;
@@ -268,7 +268,7 @@ class Eth extends AbstractMethods
     {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getTransactionByBlockNumberAndIndex',
-                [$blockNumber->toString(), '0x'.dechex($index)])
+                [$blockNumber->toString(), '0x' . dechex($index)])
         );
 
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;
